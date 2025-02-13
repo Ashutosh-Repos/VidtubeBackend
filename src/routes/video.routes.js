@@ -2,6 +2,7 @@ import { Router } from "express";
 import {publishAVideo, updateVideo, deleteVideo, getVideoById, getAllVideos, togglePublishStatus} from "../controllers/video.controllers.js"
 import { auth } from "../middlewares/auth.middlewares.js";
 import {upload} from "../middlewares/multer.middlewares.js";
+import { conversion } from "../middlewares/conversion.middlewares.js";
 const router = Router();
 
 router.route("/").get(getAllVideos);
@@ -18,6 +19,7 @@ router.route("/upload").post(
             maxCount: 1
         }
     ]),
+    conversion,
     publishAVideo
 );
 
