@@ -2,11 +2,11 @@ import multer from "multer";
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "./public/temp")
+      cb(null, "./public/temp/inc")
     },
     filename: function (req, file, cb) {
-      
-      cb(null, file.originalname)
+      const suffix = `${Date.now()}_${Math.random()*1E9}_input`
+      cb(null, suffix+file.originalname)
     }
   })
   
